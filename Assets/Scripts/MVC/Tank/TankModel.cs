@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankModel :MonoBehaviour
+public class TankModel
 {
     public int Speed { get; }
     public float Health { get; }
