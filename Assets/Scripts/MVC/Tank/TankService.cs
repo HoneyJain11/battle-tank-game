@@ -5,14 +5,28 @@ using UnityEngine;
 public class TankService : GenericSingleton<TankService>
 {
     public TankView tankView;
+    //public TankScriptableObject[] tankConfigurations;
+    public TankScriptableObjectList tankList;
+    public BulletScriptableObjectList bulletList;
     private void Start()
     {
-        CreateTank();
+        StartGame();
     }
+    public void StartGame()
+    {
+        for(int i =0; i<3;i++)
+        {
+            CreateTank();
+        }
+    
+    }
+
     private TankController CreateTank()
     {
-        TankModel model = new TankModel(2, 100f);
+        TankScriptableObject tankScriptableObject = tankList.tanks[1];
+        TankModel model = new TankModel(tankScriptableObject);
         TankController tank = new TankController(model, tankView);
         return tank;
     }
+
 }

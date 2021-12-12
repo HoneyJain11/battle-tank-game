@@ -241,6 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tankView: {fileID: 3147440740992715439, guid: 3aa73037207f547b29a33f230bf58f1c,
     type: 3}
+  tankList: {fileID: 11400000, guid: 696f6c1bcc44c4250b7ae352e8afbb69, type: 2}
+  bulletList: {fileID: 11400000, guid: 44427eec257614c739285955c3277880, type: 2}
 --- !u!1001 &451045911
 PrefabInstance:
   m_ObjectHideFlags: 0

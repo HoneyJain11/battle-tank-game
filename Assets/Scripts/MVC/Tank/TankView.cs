@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TankView : MonoBehaviour
 {
+    private TankController tankController;
     void Start()
     {
         Debug.Log("TankView Createtd");   
     }
-
 }
