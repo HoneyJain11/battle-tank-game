@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class TankView : MonoBehaviour
 {
+    public GameObject Turret;
     private TankController tankController;
     void Start()
     {
-        Debug.Log("TankView Createtd");   
+        Debug.Log("TankView Createtd");
+
     }
+
+    public void SetTankControllerReference(TankController controller)
+     {
+            tankController = controller;
+      }
+   
 }

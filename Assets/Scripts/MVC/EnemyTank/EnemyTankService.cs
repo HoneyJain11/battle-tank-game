@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyTankService : GenericSingleton<EnemyTankService>
 {
-    public EnemyTankView enemytankView;
+    public EnemyTankView enemyTankView;
     public TankScriptableObjectList enemyList;
     public BulletScriptableObjectList bulletList;
 
@@ -18,7 +18,7 @@ public class EnemyTankService : GenericSingleton<EnemyTankService>
     {
         TankScriptableObject tankScriptableObject = enemyList.tanks[1];
         EnemyTankModel model = new EnemyTankModel(tankScriptableObject);
-        EnemyTankController tank = new EnemyTankController(model, enemytankView);
+        EnemyTankController tank = new EnemyTankController(model, enemyTankView);
         return tank;
     }
 }

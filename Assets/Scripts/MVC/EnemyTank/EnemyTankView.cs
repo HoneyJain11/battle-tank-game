@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class EnemyTankView : MonoBehaviour
 {
-   
+    void Start()
+    {
+        Debug.Log("Enemy Tank Created");
+    }
 }

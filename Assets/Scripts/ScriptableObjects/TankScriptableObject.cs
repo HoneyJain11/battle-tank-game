@@ -9,6 +9,8 @@ public class TankScriptableObject : ScriptableObject
     public string TankName;
     public float Speed;
     public float Health;
+    public float RotationRate;
+    public float TurretRotationRate;
     public BulletType bulletType;
 }
 

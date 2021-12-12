@@ -8,17 +8,23 @@ public class TankService : GenericSingleton<TankService>
     //public TankScriptableObject[] tankConfigurations;
     public TankScriptableObjectList tankList;
     public BulletScriptableObjectList bulletList;
+    public Joystick RightJoystick;
+    public Joystick LeftJoystick;
+    private TankController tankController;
     private void Start()
     {
         StartGame();
+        tankController.SetJoystick(RightJoystick, LeftJoystick);
     }
     public void StartGame()
     {
-        for(int i =0; i<3;i++)
-        {
-            CreateTank();
-        }
-    
+        tankController = CreateTank();
+        
+
+    }
+    private void Update()
+    {
+        tankController.FixedUpdateTankController();
     }
 
     private TankController CreateTank()
@@ -26,6 +32,7 @@ public class TankService : GenericSingleton<TankService>
         TankScriptableObject tankScriptableObject = tankList.tanks[1];
         TankModel model = new TankModel(tankScriptableObject);
         TankController tank = new TankController(model, tankView);
+        tank.TankView.SetTankControllerReference(tank);
         return tank;
     }
 
