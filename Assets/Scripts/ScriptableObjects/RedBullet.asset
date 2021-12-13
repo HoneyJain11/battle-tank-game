@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: BulletScriptableObjectList
-  m_EditorClassIdentifier: Assembly-CSharp::BulletScriptableObjectList
-  bulletList:
-  - {fileID: 11400000, guid: 85126c1613fdc4130906516d29474c27, type: 2}
+  m_Script: {fileID: 11500000, guid: a243157d932f04c5399a4f55d0e3fdc2, type: 3}
+  m_Name: RedBullet
+  m_EditorClassIdentifier: 
+  BulletType: 0
+  BulletDamage: 50
+  BulletSpeed: 50

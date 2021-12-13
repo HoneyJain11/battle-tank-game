@@ -4,27 +4,42 @@ using UnityEngine;
 
 public class TankService : GenericSingleton<TankService>
 {
+    public Camera Camera;
     public TankView tankView;
-    //public TankScriptableObject[] tankConfigurations;
     public TankScriptableObjectList tankList;
     public BulletScriptableObjectList bulletList;
     public Joystick RightJoystick;
     public Joystick LeftJoystick;
     private TankController tankController;
+    private BulletController bulletController;
+ 
+    // private BulletService bulletService;
+
+
+
     private void Start()
     {
         StartGame();
-        tankController.SetJoystick(RightJoystick, LeftJoystick);
     }
     public void StartGame()
     {
         tankController = CreateTank();
-        
+        tankController.SetJoystick(RightJoystick, LeftJoystick);
+        tankController.SetCamera(Camera);
 
     }
-    private void Update()
+
+    private void FixedUpdate()
     {
         tankController.FixedUpdateTankController();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            tankController.UpdateShootBullet();
+        }
     }
 
     private TankController CreateTank()

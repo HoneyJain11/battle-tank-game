@@ -4,7 +4,8 @@
 public class BulletScriptableObject : ScriptableObject
 {
     public BulletType BulletType;
-    public int Damage;
+    public int BulletDamage;
+    public int BulletSpeed;
 }
 
 

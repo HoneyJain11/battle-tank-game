@@ -7,24 +7,39 @@ public class TankController
 {
     public TankModel TankModel { get; }
     public TankView TankView { get; }
-
     private Joystick rightJoystick;
     private Joystick leftJoystick;
     private Rigidbody rbTank;
+    private Camera camera;
+    //private GameObject BulletEmitter;
+    private BulletController bulletController;
+   
 
     public TankController(TankModel tankModel, TankView tankPrefab)
     {
         TankModel = tankModel;
 
         TankView = GameObject.Instantiate<TankView>(tankPrefab);
-        Debug.Log("Tank View Created");
         rbTank = TankView.GetComponent<Rigidbody>();
+    }
+
+    public void SetCamera(Camera cameraSet)
+    {
+        camera = cameraSet;
+        camera.transform.SetParent(TankView.Turret.transform);
     }
 
     public void SetJoystick(Joystick rtJoystick ,Joystick ltJoystick)
     {
         rightJoystick = rtJoystick;
         leftJoystick = ltJoystick;
+    }
+
+    public void UpdateShootBullet()
+    {
+       BulletService.Instance.CreateBullet(TankView.BulletEmitter);
+       //BulletController.Instance.ShotBullet();
+        
     }
 
     public void FixedUpdateTankController()
