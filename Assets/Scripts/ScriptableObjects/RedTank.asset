@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TanskScriptableObject
   TankType: 1
   TankName: RedTank
-  Speed: 10
+  Speed: 100
   Health: 25
   RotationRate: 50
   TurretRotationRate: 50
