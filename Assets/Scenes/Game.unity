@@ -600,9 +600,9 @@ GameObject:
   m_Component:
   - component: {fileID: 870162716}
   - component: {fileID: 870162712}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyTankPlayer
-  m_TagString: Untagged
+  m_TagString: EnemyTank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

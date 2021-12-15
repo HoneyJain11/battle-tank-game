@@ -12,10 +12,6 @@ public class TankService : GenericSingleton<TankService>
     public Joystick LeftJoystick;
     private TankController tankController;
     private BulletController bulletController;
- 
-    // private BulletService bulletService;
-
-
 
     private void Start()
     {

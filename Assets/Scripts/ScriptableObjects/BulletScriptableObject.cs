@@ -6,6 +6,10 @@ public class BulletScriptableObject : ScriptableObject
     public BulletType BulletType;
     public int BulletDamage;
     public int BulletSpeed;
+    public float MaxLifeTime;
+    public float ExplosionRadius;
+    //public ParticleSystem ExplosionParticles;
+    //public AudioSource ExplosionAudio;
 }
 
 

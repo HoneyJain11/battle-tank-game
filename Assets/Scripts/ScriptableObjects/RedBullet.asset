@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletType: 0
   BulletDamage: 50
-  BulletSpeed: 50
+  BulletSpeed: 800
+  MaxLifeTime: 2
+  ExplosionRadius: 5

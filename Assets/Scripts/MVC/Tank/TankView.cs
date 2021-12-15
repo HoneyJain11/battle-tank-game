@@ -6,6 +6,7 @@ public class TankView : MonoBehaviour
 {
     public GameObject Turret;
     public GameObject BulletEmitter;
+    
 
     private TankController tankController;
 

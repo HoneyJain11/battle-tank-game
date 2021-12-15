@@ -11,14 +11,11 @@ public class TankController
     private Joystick leftJoystick;
     private Rigidbody rbTank;
     private Camera camera;
-    //private GameObject BulletEmitter;
-    private BulletController bulletController;
    
 
     public TankController(TankModel tankModel, TankView tankPrefab)
     {
         TankModel = tankModel;
-
         TankView = GameObject.Instantiate<TankView>(tankPrefab);
         rbTank = TankView.GetComponent<Rigidbody>();
     }
@@ -38,7 +35,6 @@ public class TankController
     public void UpdateShootBullet()
     {
        BulletService.Instance.CreateBullet(TankView.BulletEmitter);
-       //BulletController.Instance.ShotBullet();
         
     }
 
