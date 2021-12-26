@@ -5,7 +5,7 @@ using UnityEngine;
 public class TankModel
 {
     public int Speed { get; }
-    public float Health { get; }
+    public float Health { get; set; }
     public TankType TankType { get; }
     public float RotationRate { get; }
     public float TurretRotationRate;
@@ -21,3 +21,4 @@ public class TankModel
     
     
 }
+    

@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Ground
+  - Undefined
   - EnemyTank
   layers:
   - Default
@@ -15,8 +17,8 @@ TagManager:
   - 
   - 
   - EnemyTank
-  - 
-  - 
+  - Player
+  - Ground
   - 
   - 
   - 

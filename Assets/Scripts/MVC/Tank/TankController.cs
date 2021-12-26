@@ -6,13 +6,13 @@ using UnityEngine;
 public class TankController
 {
     public TankModel TankModel { get; }
-    public TankView TankView { get; }
+    public TankView TankView { get; set; }
     private Joystick rightJoystick;
     private Joystick leftJoystick;
     private Rigidbody rbTank;
     private Camera camera;
+    float byDefaultHealth;
    
-
     public TankController(TankModel tankModel, TankView tankPrefab)
     {
         TankModel = tankModel;
@@ -32,10 +32,66 @@ public class TankController
         leftJoystick = ltJoystick;
     }
 
+    public void SetHealthUI()
+    {
+        TankView.healthSlider.value = TankModel.Health;
+        TankView.healthFillImage.color = Color.Lerp(TankView.minHealthColour, TankView.maxHealthColour, TankModel.Health/ byDefaultHealth);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        byDefaultHealth = TankModel.Health;
+        TankModel.Health -= damage;
+        SetHealthUI();
+        if (TankModel.Health <= 0f && !TankView.isTankLive)
+        {
+            OnDeath();
+        }
+    }
+
+    public void OnDeath()
+    {
+        TankView.isTankLive = true;
+        TankView.explosionParticles.transform.position = TankView.transform.position;
+        TankView.explosionParticles.gameObject.SetActive(true);
+        TankView.explosionParticles.Play();
+        TankView.explosionSound.Play();
+        camera.transform.parent = null;
+        TankView.DestroyTank();
+        DestroyGameObjects();
+    }
+
+    public void DestroyGameObjects()
+    {
+        DestroyEnemyObjects();
+        DestroyGroundObjects();
+        
+    }
+
+    private async void DestroyEnemyObjects()
+    {
+        await new WaitForSeconds(2f);
+        GameObject enemyTank = GameObject.FindGameObjectWithTag("EnemyTank");
+        enemyTank.GetComponent<EnemyTankView>().enemyTankController.OnEnemyDeath();
+    }
+
+    private async void DestroyGroundObjects()
+    {
+        await new WaitForSeconds(3f);
+        GameObject ground = GameObject.FindGameObjectWithTag("Ground");
+        DestroyGround(ground);
+        await new WaitForSeconds(0.05f);
+       
+    }
+
+    private void DestroyGround(GameObject gameObject)
+    {
+        TankView.DestroyGround(gameObject);
+    }
+
     public void UpdateShootBullet()
     {
        BulletService.Instance.CreateBullet(TankView.BulletEmitter);
-        
     }
 
     public void FixedUpdateTankController()

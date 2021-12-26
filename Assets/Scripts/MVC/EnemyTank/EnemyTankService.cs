@@ -10,13 +10,11 @@ public class EnemyTankService : GenericSingleton<EnemyTankService>
     public BulletScriptableObjectList bulletList;
     public EnemyTankController enemyTankController;
     public Transform[] points;
-    //public NavMeshAgent agent;
-   // public LayerMask whatIsGround, whatIsPlayer;
 
     private void Start()
     {
         enemyTankController = CreateEnemyTank();
-
+        enemyTankController.SetEnemyHealthUI();
     }
   
     private EnemyTankController CreateEnemyTank()
@@ -26,8 +24,9 @@ public class EnemyTankService : GenericSingleton<EnemyTankService>
         EnemyTankController tank = new EnemyTankController(model, enemyTankView);
         return tank;
     }
+
     private void Update()
     {
-        enemyTankController.UpdateEnemyTankPatrolling();
+        enemyTankController.UpdateEnemyTankPatrolling1();
     }
 }
