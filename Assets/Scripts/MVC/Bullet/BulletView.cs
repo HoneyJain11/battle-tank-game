@@ -28,6 +28,6 @@ public class BulletView : MonoBehaviour
     }
     public void DestroyBullet()
     {
-        Destroy(gameObject,1f);
+        Destroy(gameObject);
     }
 }

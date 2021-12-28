@@ -9,7 +9,6 @@ public class EnemyTankController
 {
     public EnemyTankModel TankModel { get; }
     public EnemyTankView TankView { get; }
-
     float byDefaultEnemyHealth;
 
     public EnemyTankController(EnemyTankModel tankModel, EnemyTankView tankPrefab)

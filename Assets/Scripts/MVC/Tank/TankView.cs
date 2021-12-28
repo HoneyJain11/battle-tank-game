@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TankView : MonoBehaviour
+public class TankView : MonoBehaviour,IDamagable
 {
     public GameObject Turret;
     public GameObject BulletEmitter;
@@ -44,5 +44,10 @@ public class TankView : MonoBehaviour
     public void DestroyGround(GameObject gameObject)
     {
         Destroy(gameObject);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        tankController.TakeDamage(damage);
     }
 }

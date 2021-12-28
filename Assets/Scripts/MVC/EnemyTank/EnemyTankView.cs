@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
-public class EnemyTankView : MonoBehaviour
+public class EnemyTankView : MonoBehaviour, IDamagable
 {
     public GameObject Turret;
     public GameObject BulletEmitter;
@@ -59,7 +59,6 @@ public class EnemyTankView : MonoBehaviour
     private async void DestroyPlayer()
     {
         await new WaitForSeconds(2f);
-
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<TankView>().tankController.OnDeath();
 
@@ -69,5 +68,10 @@ public class EnemyTankView : MonoBehaviour
     {
         tankPlayer = TankService.Instance.tankView.transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+
+    public void TakeDamage(int damage)
+    {
+        enemyTankController.TakeDamage(damage);
     }
 }
