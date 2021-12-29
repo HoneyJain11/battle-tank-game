@@ -30,6 +30,13 @@ public class EnemyTankView : MonoBehaviour, IDamagable
     public Transform tankPlayer;
     public bool isAttacked;
     public EnemyTankController enemyTankController;
+    [HideInInspector]
+    public EnemyStates currentState;
+    public StateType activeState;
+    [SerializeField] private StateType baseState;
+    public EnemyPatrolling patrollingState;
+    public EnemyChasing chasingState;
+    public EnemyAttacking attackingState;
 
 
     private void Awake()
@@ -37,13 +44,14 @@ public class EnemyTankView : MonoBehaviour, IDamagable
         explosionParticles = Instantiate(explosionPrefab).GetComponent<ParticleSystem>();
         explosionSound = explosionParticles.GetComponent<AudioSource>();
         explosionParticles.gameObject.SetActive(false);
-        
         UpdateAwake();
+        
+
     }
     void Start()
     {
-        Debug.Log("Enemy Tank Created");
-        
+        StartState();
+
     }
     public void DestroyEnemyTank()
     {
@@ -74,4 +82,35 @@ public class EnemyTankView : MonoBehaviour, IDamagable
     {
         enemyTankController.TakeDamage(damage);
     }
+
+   
+
+    private void StartState()
+    {
+        switch (baseState)
+        {
+            case StateType.patrolling:
+                {
+                    currentState = patrollingState;
+                    break;
+                }
+            case StateType.Attacking:
+                {
+                    currentState = attackingState;
+                    break;
+                }
+            case StateType.chasing:
+                {
+                    currentState = chasingState;
+                    break;
+                }
+            default:
+                {
+                    currentState = null;
+                    break;
+                }
+        }
+        currentState.OnEnterState();
+    }
+
 }

@@ -23,8 +23,8 @@ public class EnemyTankController
         {
             TankView.playerInSightRange = Physics.CheckSphere(TankView.transform.position, TankView.sightRange, TankView.playerTank);
             TankView.playerInAttackRange = Physics.CheckSphere(TankView.transform.position, TankView.sightRange, TankView.playerTank);
-            if (!TankView.playerInSightRange && !TankView.playerInAttackRange) Patrolling();
-            if (TankView.playerInAttackRange && TankView.playerInSightRange) AttackPlayer();
+            //if (!TankView.playerInSightRange && !TankView.playerInAttackRange) Patrolling();
+            //if (TankView.playerInAttackRange && TankView.playerInSightRange) AttackPlayer();
         }
     }
 
