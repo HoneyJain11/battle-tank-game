@@ -8,21 +8,36 @@ public class EnemyPatrolling : EnemyStates
     public override void OnEnterState()
     {
         base.OnEnterState();
-        enemyTankView.activeState = StateType.patrolling;
+        
+    }
+    protected override void Start()
+    {
+        base.Start();
+        ChangeWalkPointSet();
     }
     private void Update()
     {
-        if (enemyTankView.playerInSightRange && !enemyTankView.playerInAttackRange)
-            enemyTankView.currentState.ChangeState(enemyTankView.chasingState);
-        else if (enemyTankView.playerInSightRange && enemyTankView.playerInAttackRange)
-            enemyTankView.currentState.ChangeState(enemyTankView.attackingState);
+        if (enemyTankView.playerInSightRange && !enemyTankView.playerInAttackRange) enemyTankView.ChangeState(enemyTankView.chasingState);
+        else if (enemyTankView.playerInSightRange && enemyTankView.playerInAttackRange) enemyTankView.ChangeState(enemyTankView.attackingState);
+
         Patrolling();
+        ResetTurretRotation();
     }
+
+    public async void ChangeWalkPointSet()
+    {
+        while (true)
+        {
+            await new WaitForSeconds(5);
+            enemyTankView.walkPointSet = false;
+        }
+    }
+
     public override void OnExitState()
     {
         base.OnExitState();
     }
-
+    //to do automatic patrolling by using navmesh
     private void Patrolling()
     {
         if (!enemyTankView.walkPointSet)
@@ -33,7 +48,7 @@ public class EnemyPatrolling : EnemyStates
         if (distanceToWalkPoint.magnitude < 1f)
         enemyTankView.walkPointSet = false;
     }
-
+    // to find walkpoints to patrolling
     private void SearchWalkPoint()
     {
         float randomZ = Random.Range(-enemyTankView.walkPointRange, enemyTankView.walkPointRange);
@@ -42,6 +57,16 @@ public class EnemyPatrolling : EnemyStates
         if (Physics.Raycast(enemyTankView.walkPoint, -enemyTankView.transform.up, 2f, enemyTankView.groundMask))
         enemyTankView.walkPointSet = true;
 
+    }
+    // to reset tuuret forward to tank direction
+    private void ResetTurretRotation()
+    {
+        if (enemyTankView.Turret.transform.rotation.eulerAngles.y - enemyTankView.transform.rotation.eulerAngles.y > 1
+                || enemyTankView.Turret.transform.rotation.eulerAngles.y - enemyTankView.transform.rotation.eulerAngles.y < -1)
+        {
+            Vector3 desiredRotation = Vector3.up * enemyTankView.turretRotationRate * Time.deltaTime;
+            enemyTankView.Turret.transform.Rotate(desiredRotation, Space.Self);
+        }
     }
 }
 

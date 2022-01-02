@@ -32,8 +32,8 @@ public class EnemyTankView : MonoBehaviour, IDamagable
     public EnemyTankController enemyTankController;
     [HideInInspector]
     public EnemyStates currentState;
-    public StateType activeState;
-    [SerializeField] private StateType baseState;
+    [SerializeField]
+    private EnemyStates activeState;
     public EnemyPatrolling patrollingState;
     public EnemyChasing chasingState;
     public EnemyAttacking attackingState;
@@ -44,37 +44,29 @@ public class EnemyTankView : MonoBehaviour, IDamagable
         explosionParticles = Instantiate(explosionPrefab).GetComponent<ParticleSystem>();
         explosionSound = explosionParticles.GetComponent<AudioSource>();
         explosionParticles.gameObject.SetActive(false);
-        UpdateAwake();
-        
-
+        GetPlayerTransform();
     }
     void Start()
     {
-        StartState();
-
+        ChangeState(activeState);
     }
+    private void Update()
+    {
+        enemyTankController.EnemyTankRange();
+    }
+
     public void DestroyEnemyTank()
     {
-     
+
         Destroy(gameObject);
     }
 
-    public void DestroyGameObjects()
+    //getting tnakplayer transform value
+    public void GetPlayerTransform()
     {
-        DestroyPlayer();
-    }
-
-    private async void DestroyPlayer()
-    {
-        await new WaitForSeconds(2f);
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<TankView>().tankController.OnDeath();
-
-    }
-
-    public void UpdateAwake()
-    {
+        if(TankService.Instance.tankView)
         tankPlayer = TankService.Instance.tankView.transform;
+        
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -82,35 +74,16 @@ public class EnemyTankView : MonoBehaviour, IDamagable
     {
         enemyTankController.TakeDamage(damage);
     }
-
-   
-
-    private void StartState()
+    //using to change state in State machine
+    public void ChangeState(EnemyStates newState)
     {
-        switch (baseState)
+        if (currentState != null)
         {
-            case StateType.patrolling:
-                {
-                    currentState = patrollingState;
-                    break;
-                }
-            case StateType.Attacking:
-                {
-                    currentState = attackingState;
-                    break;
-                }
-            case StateType.chasing:
-                {
-                    currentState = chasingState;
-                    break;
-                }
-            default:
-                {
-                    currentState = null;
-                    break;
-                }
+            currentState.OnExitState();
         }
+        currentState = newState;
         currentState.OnEnterState();
     }
 
 }
+
