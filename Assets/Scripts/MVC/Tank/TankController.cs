@@ -92,6 +92,7 @@ public class TankController
     public void ShootBullet()
     {
        BulletService.Instance.CreateBullet(TankView.BulletEmitter);
+       EventHandler.Instance.InvokeOnShotBullet();
     }
     //player tank movement controller via joystick
     public void MovementController()
@@ -108,7 +109,7 @@ public class TankController
             }
         }
         //due to this true we can move forward and backward when turret in reverse direction.
-        if (true)
+        if (TankView.Turret)
         {
             if (rightJoystick.Horizontal != 0)
             {
