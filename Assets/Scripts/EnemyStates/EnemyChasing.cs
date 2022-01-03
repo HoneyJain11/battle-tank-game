@@ -33,6 +33,7 @@ public class EnemyChasing : EnemyStates
             enemyTankView.ChangeState(enemyTankView.patrollingState);
             return;
         }
+       
         enemyTankView.navMeshAgent.SetDestination(enemyTankView.tankPlayer.position);
 
 

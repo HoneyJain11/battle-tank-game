@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e2db8ee2761454d92a5f3d7384882c, type: 3}
+  m_Name: EnemiesKilledAchievementScriptableObject
+  m_EditorClassIdentifier: 
+  achievements:
+  - name: Humble Brag
+    info: Killed 1 Enemy
+    selectAchievement: 1
+    requirement: 1
+  - name: Demon Sock
+    info: Killed 3 Enemy
+    selectAchievement: 2
+    requirement: 3
+  - name: Blood Thirsty
+    info: Killed 5 Enemy
+    selectAchievement: 3
+    requirement: 5

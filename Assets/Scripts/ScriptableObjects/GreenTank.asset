@@ -19,3 +19,5 @@ MonoBehaviour:
   RotationRate: 50
   TurretRotationRate: 50
   bulletType: 1
+  BulletCount: 0
+  EnemiesKilledCount: 0

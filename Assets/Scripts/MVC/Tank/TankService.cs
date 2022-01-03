@@ -23,6 +23,7 @@ public class TankService : GenericSingleton<TankService>
         tankController.SetJoystick(RightJoystick, LeftJoystick);
         tankController.SetCamera(Camera);
         tankController.SetHealthUI();
+        tankController.SubscribeEvent();
     }
 
     public TankController CreateTank()

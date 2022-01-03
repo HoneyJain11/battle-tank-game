@@ -27,7 +27,6 @@ public class TankView : MonoBehaviour,IDamagable
         explosionParticles.gameObject.SetActive(false);
     }
  
-
     private void FixedUpdate()
     {
         tankController.MovementController();
@@ -59,5 +58,9 @@ public class TankView : MonoBehaviour,IDamagable
     public void TakeDamage(int damage)
     {
         tankController.TakeDamage(damage);
+    }
+    private void OnDisable()
+    {
+        tankController.UnsubscribeEvent();
     }
 }

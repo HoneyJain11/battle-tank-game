@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TanskScriptableObject
   TankType: 3
   TankName: Blue Tank
-  Speed: 20
+  Speed: 5
   Health: 100
   RotationRate: 50
   TurretRotationRate: 50
   bulletType: 0
+  BulletCount: 0
+  EnemiesKilledCount: 0

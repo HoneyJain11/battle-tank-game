@@ -42,6 +42,7 @@ public class EnemyTankController
         if (TankModel.Health <= 0f && !TankView.isEnemyTankLive)
         {
             OnEnemyDeath();
+            EventHandler.Instance.InvokeOnEnemyDeathEvent();
         }
     }
     //calling particle effect and to destroy objects
