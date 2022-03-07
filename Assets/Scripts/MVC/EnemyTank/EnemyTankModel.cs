@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankModel
+public class EnemyTankModel
 {
     public int Speed { get; }
     public float Health { get; }
     public TankType TankType { get; }
-    public float RotationRate { get; }
-    public float TurretRotationRate;
-    public TankModel(TankScriptableObject tankScriptableObject)
+    public Vector3 walkPoint { get; set; }
+    //public float walkPointRange { get; set; }
+    //public bool walkPointSet { get; set; }
+    public EnemyTankModel(TankScriptableObject tankScriptableObject)
     {
         TankType = tankScriptableObject.TankType;
         Speed = (int)tankScriptableObject.Speed;
         Health = tankScriptableObject.Health;
-        RotationRate = tankScriptableObject.RotationRate;
-        TurretRotationRate = tankScriptableObject.TurretRotationRate;
+        //walkPointSet = false;
+        //walkPointRange =;
 
     }
-    
-    
 }
