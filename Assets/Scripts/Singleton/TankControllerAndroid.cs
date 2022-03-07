@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankController : GenericSingleton<TankController>
+public class TankControllerAndroid : GenericSingleton<TankControllerAndroid>
 {
     public Joystick joystick;
     public float MoveSpeed = 2f;
@@ -14,6 +15,5 @@ public class TankController : GenericSingleton<TankController>
 
         transform.position += new Vector3(XAxisMovement, 0, ZAxisMovement);
     }
-
 
 }
