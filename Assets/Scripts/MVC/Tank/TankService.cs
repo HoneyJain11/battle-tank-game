@@ -10,9 +10,9 @@ public class TankService : GenericSingleton<TankService>
     public BulletScriptableObjectList bulletList;
     public Joystick RightJoystick;
     public Joystick LeftJoystick;
-    private TankController tankController;
+    public TankController tankController;
     private BulletController bulletController;
-
+   
     private void Start()
     {
         StartGame();
@@ -22,7 +22,7 @@ public class TankService : GenericSingleton<TankService>
         tankController = CreateTank();
         tankController.SetJoystick(RightJoystick, LeftJoystick);
         tankController.SetCamera(Camera);
-
+        tankController.SetHealthUI();
     }
 
     private void FixedUpdate()
@@ -35,6 +35,10 @@ public class TankService : GenericSingleton<TankService>
         if (Input.GetKeyDown("space"))
         {
             tankController.UpdateShootBullet();
+        }
+        if(Input.GetKeyDown("d"))
+        {
+            tankController.DestroyGameObjects();
         }
     }
 

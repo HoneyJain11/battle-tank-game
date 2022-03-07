@@ -15,7 +15,7 @@ MonoBehaviour:
   TankType: 2
   TankName: GreenTank
   Speed: 10
-  Health: 75
+  Health: 100
   RotationRate: 50
   TurretRotationRate: 50
   bulletType: 1
