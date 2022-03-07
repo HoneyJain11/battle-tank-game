@@ -44,11 +44,13 @@ public class EnemyTankView : MonoBehaviour, IDamagable
         explosionParticles = Instantiate(explosionPrefab).GetComponent<ParticleSystem>();
         explosionSound = explosionParticles.GetComponent<AudioSource>();
         explosionParticles.gameObject.SetActive(false);
-        GetPlayerTransform();
+        
     }
     void Start()
     {
         ChangeState(activeState);
+        GetPlayerTransform();
+
     }
     private void Update()
     {
@@ -65,7 +67,7 @@ public class EnemyTankView : MonoBehaviour, IDamagable
     public void GetPlayerTransform()
     {
         if(TankService.Instance.tankView)
-        tankPlayer = TankService.Instance.tankView.transform;
+        tankPlayer = TankService.Instance.tankController.TankView.transform;
         
         navMeshAgent = GetComponent<NavMeshAgent>();
     }

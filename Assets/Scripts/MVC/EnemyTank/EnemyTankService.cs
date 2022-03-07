@@ -13,13 +13,18 @@ public class EnemyTankService : GenericSingleton<EnemyTankService>
 
     private void Start()
     {
-        enemyTankController = CreateEnemyTank();
-        enemyTankController.SetEnemyHealthUI();
+        for (int i = 0; i < 3; i++)
+        {
+            enemyTankController = CreateEnemyTank();
+            enemyTankController.SetEnemyHealthUI();
+        }
+        
     }
+
   
     private EnemyTankController CreateEnemyTank()
     {
-        TankScriptableObject tankScriptableObject = enemyList.tanks[1];
+        TankScriptableObject tankScriptableObject = enemyList.tanks[2];
         EnemyTankModel model = new EnemyTankModel(tankScriptableObject);
         EnemyTankController tank = new EnemyTankController(model, enemyTankView);
         return tank;

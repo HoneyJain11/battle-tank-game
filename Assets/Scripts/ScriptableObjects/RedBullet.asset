@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RedBullet
   m_EditorClassIdentifier: 
   BulletType: 0
-  BulletDamage: 20
+  BulletDamage: 10
   BulletSpeed: 800
   MaxLifeTime: 2
   ExplosionRadius: 5

@@ -9,6 +9,8 @@ public class TankModel
     public TankType TankType { get; }
     public float RotationRate { get; }
     public float TurretRotationRate;
+    public int BulletCount { get; set; }
+    public int EnemiesKilledCount { get; set; }
     public TankModel(TankScriptableObject tankScriptableObject)
     {
         TankType = tankScriptableObject.TankType;
@@ -16,7 +18,8 @@ public class TankModel
         Health = tankScriptableObject.Health;
         RotationRate = tankScriptableObject.RotationRate;
         TurretRotationRate = tankScriptableObject.TurretRotationRate;
-
+        BulletCount = tankScriptableObject.BulletCount;
+        EnemiesKilledCount = tankScriptableObject.EnemiesKilledCount;
     }
     
     

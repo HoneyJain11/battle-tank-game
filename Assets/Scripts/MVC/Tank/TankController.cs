@@ -71,16 +71,22 @@ public class TankController
     private async void DestroyEnemyObjects()
     {
         await new WaitForSeconds(2f);
-        GameObject enemyTank = GameObject.FindGameObjectWithTag("EnemyTank");
-        enemyTank.GetComponent<EnemyTankView>().enemyTankController.OnEnemyDeath();
+        GameObject[] enemyTank = GameObject.FindGameObjectsWithTag("EnemyTank");
+        for (int i = 0; i < enemyTank.Length; i++)
+        {
+            enemyTank[i].GetComponent<EnemyTankView>().enemyTankController.OnEnemyDeath();
+        }
     }
 
     private async void DestroyGroundObjects()
     {
         await new WaitForSeconds(3f);
-        GameObject ground = GameObject.FindGameObjectWithTag("Ground");
-        DestroyGround(ground);
-        await new WaitForSeconds(0.05f);
+        GameObject[] ground = GameObject.FindGameObjectsWithTag("Ground");
+        for (int i = ground.Length - 1; i >= 0; i--)
+        {
+            DestroyGround(ground[i]);
+            await new WaitForSeconds(0.05f);
+        }
        
     }
 
@@ -138,4 +144,27 @@ public class TankController
         Vector3 moveforward = rbTank.transform.position + (leftJoystick.Vertical * rbTank.transform.forward * TankModel.Speed * Time.deltaTime);
         rbTank.MovePosition(moveforward);
     }
+    public void SubscribeEvent()
+    {
+        EventHandler.Instance.OnShotBullet += CountBullet;
+        EventHandler.Instance.OnEnemyDeath += CountEnemy;
+     }
+
+    private void CountEnemy()
+    {
+        TankModel.EnemiesKilledCount += 1;
+        AchievementSystem.Instance.EnemyDeathCount(TankModel.EnemiesKilledCount);
+    }
+
+    public void CountBullet()
+    {
+        TankModel.BulletCount += 1;
+        AchievementSystem.Instance.BulletsFiredCount(TankModel.BulletCount);
+    }
+    public void UnsubscribeEvent()
+    {
+        EventHandler.Instance.OnShotBullet -= CountBullet;
+        EventHandler.Instance.OnEnemyDeath -= CountEnemy;
+    }
+
 }

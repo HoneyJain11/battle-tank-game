@@ -759,7 +759,7 @@ GameObject:
   - component: {fileID: 4039464181933366}
   m_Layer: 10
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4
@@ -958,7 +958,7 @@ GameObject:
   - component: {fileID: 4308940059654910}
   m_Layer: 0
   m_Name: Cacti
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4
@@ -1302,7 +1302,7 @@ GameObject:
   - component: {fileID: 65814474307573002}
   m_Layer: 0
   m_Name: Helipad
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2497,7 +2497,7 @@ GameObject:
   - component: {fileID: 4173912048182016}
   m_Layer: 0
   m_Name: Trees
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4
@@ -3469,7 +3469,7 @@ GameObject:
   - component: {fileID: 4640372217643320}
   m_Layer: 0
   m_Name: OilField
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4
@@ -3506,7 +3506,7 @@ GameObject:
   - component: {fileID: 108508902704731568}
   m_Layer: 0
   m_Name: Directional light
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4
@@ -3783,7 +3783,7 @@ GameObject:
   - component: {fileID: 4400793842168200}
   m_Layer: 0
   m_Name: Military
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4
@@ -7936,7 +7936,7 @@ GameObject:
   - component: {fileID: 4813453672545610}
   m_Layer: 0
   m_Name: Ruins
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4
@@ -8790,7 +8790,7 @@ GameObject:
   - component: {fileID: 4777080953605170}
   m_Layer: 0
   m_Name: Dunes
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4
@@ -9972,7 +9972,7 @@ GameObject:
   - component: {fileID: 1158996495}
   m_Layer: 0
   m_Name: Boundaries
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4
@@ -10101,7 +10101,7 @@ GameObject:
   - component: {fileID: 4620173435047246}
   m_Layer: 0
   m_Name: Rocks
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4

@@ -12,6 +12,8 @@ public class TankScriptableObject : ScriptableObject
     public float RotationRate;
     public float TurretRotationRate;
     public BulletType bulletType;
+    public int BulletCount;
+    public int EnemiesKilledCount;
 }
 
 [CreateAssetMenu(fileName = "TankScriptableObjectList", menuName = "ScriptableObjects/NewTankListScriptableObject")]
