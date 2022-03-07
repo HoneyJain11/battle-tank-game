@@ -11,7 +11,7 @@ public class TankService : GenericSingleton<TankService>
     public Joystick RightJoystick;
     public Joystick LeftJoystick;
     public TankController tankController;
-    private BulletController bulletController;
+    
    
     private void Start()
     {
@@ -25,24 +25,7 @@ public class TankService : GenericSingleton<TankService>
         tankController.SetHealthUI();
     }
 
-    private void FixedUpdate()
-    {
-        tankController.FixedUpdateTankController();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown("space"))
-        {
-            tankController.UpdateShootBullet();
-        }
-        if(Input.GetKeyDown("d"))
-        {
-            tankController.DestroyGameObjects();
-        }
-    }
-
-    private TankController CreateTank()
+    public TankController CreateTank()
     {
         TankScriptableObject tankScriptableObject = tankList.tanks[1];
         TankModel model = new TankModel(tankScriptableObject);

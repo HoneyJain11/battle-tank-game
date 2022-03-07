@@ -8,8 +8,7 @@ public class BulletController
     public BulletView BulletView { get; set; }
     public BulletModel BulletModel { get; }
     public BulletService BulletService { get; }
-    //public TankView TankView { get; }
-    //public EnemyTankController enemyTankController { get; set; }
+
     public BulletController(BulletModel bulletModel, BulletView bulletPrefab, GameObject bulletEmitter)
     {
         BulletModel = bulletModel;
@@ -24,55 +23,29 @@ public class BulletController
        rb = BulletView.GetComponent<Rigidbody>();
        rb.AddForce(BulletView.transform.forward * BulletModel.bulletSpeed);
     }
-
+    // to give damage when bullet collide 
     public void OnCollisionEnter(Collider other)
     {
-        Collider[] colliders = Physics.OverlapSphere(BulletView.transform.position, BulletModel.explosionRadius, BulletView.tankMask);
-        for (int i = 0; i < colliders.Length; i++)
+        IDamagable damagable = other.GetComponent<IDamagable>();
+        if(damagable != null)
         {
-            Rigidbody targetRb = colliders[i].GetComponent<Rigidbody>();
-            Rigidbody playerRb = colliders[i].GetComponent<Rigidbody>();
-            if (!targetRb && !playerRb)
-                continue;
-            targetRb.AddExplosionForce(BulletModel.bulletSpeed, BulletView.transform.position, BulletModel.explosionRadius);
-            playerRb.AddExplosionForce(BulletModel.bulletSpeed, BulletView.transform.position, BulletModel.explosionRadius);
-            EnemyTankView targetEenemy = targetRb.GetComponent<EnemyTankView>();
-            TankView playerTank = playerRb.GetComponent<TankView>();
-            if (!targetEenemy && !playerTank)
-             continue;
-
-            else if(targetEenemy)
-            {
-                float damage = CalculateDamage(targetRb.position);
-                Debug.Log("Connect with Enemytank");
-                EnemyTankService.Instance.enemyTankController.TakeDamage((int)damage);
-
-            }
-            else if(playerTank)
-            {
-                float damage = CalculateDamage(playerRb.position);
-                Debug.Log("Connect with PlayerTank");
-                TankService.Instance.tankController.TakeDamage((int)damage);
-            }
-           
+            DoDamage(damagable, other);
         }
         PlayParticleEffects();
         PlayExplosionAudio();
         BulletView.DestroyBullet();
 
     }
-
-    private float CalculateDamage(Vector3 targetPosition)
+    // to give damage when bullet collide with rigidbody
+    private void DoDamage(IDamagable damagable, Collider other)
     {
-        Vector3 explosionToTarget = targetPosition - BulletView.transform.position;
-        float explosionDistance = explosionToTarget.magnitude;
-        float relativeDistance = (BulletModel.explosionRadius - explosionDistance) / BulletModel.explosionRadius;
-        float damage = relativeDistance * BulletModel.bulletDamage;
-        damage = Mathf.Max(0f, damage);
-        return damage;
+        Rigidbody targetRb = other.GetComponent<Rigidbody>();
+        if(targetRb)
+        {
+            damagable.TakeDamage(BulletModel.bulletDamage);
+        }
     }
-
-
+    // play particle effect after bullet collide with objects
     private void PlayParticleEffects()
     {
         ParticleSystem explosionParticles = BulletView.explosionParticles;
@@ -81,7 +54,7 @@ public class BulletController
         BulletView.DestroyParticleSystem(explosionParticles);
     }
 
-
+    // play audio when bullet collide with object
     private void PlayExplosionAudio()
     {
         BulletView.explosionAudio.Play();

@@ -462,6 +462,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f80d8c876fb45af8b4dbb3fa25d214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Camera: {fileID: 0}
+  RightJoystick: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+    type: 3}
+  LeftJoystick: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+    type: 3}
   Turret: {fileID: 6299372384260833609}
   BulletEmitter: {fileID: 1865852795}
   healthSlider: {fileID: 1926687348}
@@ -472,6 +477,7 @@ MonoBehaviour:
   isTankLive: 0
   explosionSound: {fileID: 0}
   explosionParticles: {fileID: 0}
+  tankService: {fileID: 0}
 --- !u!54 &4315484600315735351
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -486,7 +492,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 32
   m_CollisionDetection: 0
 --- !u!65 &-7630571569830010745
 BoxCollider:

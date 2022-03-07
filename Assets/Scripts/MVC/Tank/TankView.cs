@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TankView : MonoBehaviour
+public class TankView : MonoBehaviour,IDamagable
 {
     public GameObject Turret;
     public GameObject BulletEmitter;
@@ -18,6 +18,7 @@ public class TankView : MonoBehaviour
     public ParticleSystem explosionParticles;
     [HideInInspector]
     public TankController tankController;
+    
 
     private void Awake()
     {
@@ -25,24 +26,38 @@ public class TankView : MonoBehaviour
         explosionSound = explosionParticles.GetComponent<AudioSource>();
         explosionParticles.gameObject.SetActive(false);
     }
-    void Start()
-    {
-        Debug.Log("TankView Createtd");
+ 
 
+    private void FixedUpdate()
+    {
+        tankController.MovementController();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            tankController.ShootBullet();
+        }
     }
 
     public void SetTankControllerReference(TankController controller)
      {
          tankController = controller;
      }
-
+    // to destroy tank player
     public void DestroyTank()
     {
         Destroy(gameObject);
     }
-
+    // to destroy all gameobjects in game after palyer death
     public void DestroyGround(GameObject gameObject)
     {
         Destroy(gameObject);
+    }
+    // take damage on playertank
+    public void TakeDamage(int damage)
+    {
+        tankController.TakeDamage(damage);
     }
 }

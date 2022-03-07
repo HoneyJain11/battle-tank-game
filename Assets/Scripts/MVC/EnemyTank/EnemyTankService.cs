@@ -25,8 +25,5 @@ public class EnemyTankService : GenericSingleton<EnemyTankService>
         return tank;
     }
 
-    private void Update()
-    {
-        enemyTankController.UpdateEnemyTankPatrolling1();
-    }
+
 }

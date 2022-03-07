@@ -13,21 +13,19 @@ public class BulletView : MonoBehaviour
     {
         bulletController = controller;
     }
-    void Start()
-    {
-        Debug.Log("Bullet is Created"); 
-    }
-
+   
     private void OnTriggerEnter(Collider other)
     {
         bulletController.OnCollisionEnter(other);
     }
+    // to destroy bullet particle effect 
     public void DestroyParticleSystem(ParticleSystem particles)
     {
         Destroy(particles.gameObject, particles.main.duration);
     }
+    //to destroy bullet object
     public void DestroyBullet()
     {
-        Destroy(gameObject,1f);
+        Destroy(gameObject);
     }
 }
